@@ -1,0 +1,50 @@
+This directory contains the data and analysis files used in [1].  Questions and comments can be sent to Joshua Weitz <jsweitz@gatech.edu>.
+
+
+data_*.txt - Empirical gene frequency distributions from 6 bacterial species (B. anthracis, E. coli, Staph. aureus, Strep. pneumoniae, Strep. pyogenes and N. meningitidis).  See [1] for details of how these distributions were compiled.
+
+
+model_A_genefreq.m - Matlab script which calculates the gene frequency distribution under model A (constant population size).  It takes as inputs
+ - the number of genomes N,
+ - the number of genes per genome M,
+ - the gene transfer parameter theta.
+
+model_B_genefreq.m - Matlab script which calculates the gene frequency distribution under model B (exponentially growing population size). It takes as inputs
+ - the number of genomes N,
+ - the number of genes per genome M,
+ - the gene transfer parameter theta0,
+ - the population growth parameter beta.
+If the number of genomes N is large (e.g., N=20), this computation can take a considerable amount of time.
+
+model_B_genefreq_rhs.m - Auxiliary Matlab script used by model_B_genefreq.m.
+
+model_C_genefreq.m - Matlab script which calculates the gene frequency distribution under model C (rigid core genome). It takes as inputs
+ - the number of genomes N,
+ - the number of genes per genome M,
+ - the fraction lambda2 of the rigid core genome,
+ - the gene transfer parameter theta1 of the fluid genome part.
+
+model_D_genefreq.m - Matlab script which calculates the gene frequency distribution under model D (flexible core genome). It takes as inputs
+ - the number of genomes N,
+ - the number of genes per genome M,
+ - the fraction lambda2 of the flexible core genome,
+ - the gene transfer parameter theta1 of the most fluid genome part,
+ - the gene transfer parameter of the least fluid genome part.
+
+model_error.m - Matlab script which calculates the distance Delta between an empirical gene frequency distribution and a model prediction (see Eq. (6) in [1]). It takes as inputs 
+ - the empirical gene frequency distribution
+ - the number of genomes N,
+ - the number of genes per genome M,
+ - the model (1 for A, 2 for B, 3 for C, 4 for D)
+ - the model parameters.
+
+model_fitparams.m - Matlab script which calculates the combination of model parameters that minimizes the distance Delta between an empirical gene frequency and the model prediction. It takes as inputs
+ - the empirical distribution,
+ - the model (1 for A, 2 for B, 3 for C, 4 for D).
+It returns as outputs
+ - the parameters of the model fit,
+ - the distance between the empirical distribution and the model fit,
+ - the gene frequency distribution of the model fit.
+
+
+[1] Haegeman B, Weitz JS (2011) A neutral theory of genome evolution and the frequency distribution of genes. Manuscript.
